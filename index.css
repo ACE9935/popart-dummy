@@ -30,6 +30,7 @@
 
 :root {
     --primary-color: #d7436f;
+    --primary-light-color: #ffa5e0;
     --secondary-color: #e4e8ee92;
     --third-color: #f3d52e;
     --fourth-color: rgb(15, 148, 71);
@@ -66,6 +67,7 @@ main, body {
     }
 }
 
+
 nav {
     background-color: var(--third-color);
     color: white;
@@ -84,9 +86,13 @@ nav img {
 
 nav ul {
     display: flex;
-    font-weight: 600;
+    font-weight: bold;
     list-style: none;
     gap: 2.5rem;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    padding-inline: 1.4rem;
 }
 
 nav ul li {
@@ -97,7 +103,7 @@ nav ul li {
 
 nav ul li:after {
     content: "";
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     position: absolute;
     width: 0;
     height: 0.2rem;
@@ -112,7 +118,7 @@ nav ul li:hover:after {
 }
 
 @media (max-width: 700px) {
-    ul, .commander {
+    nav ul, .commander {
         display: none !important;
     }
 }
@@ -128,6 +134,45 @@ img {
     outline-offset: -2px;
 }
 
+.btn-light {
+    background-color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-light-color);
+    width: fit-content;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.6s;
+}
+.add-to-cart {
+    background-color: var(--primary-color);
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 3rem !important;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 100px;
+    width: fit-content;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.6s;
+    position: relative;
+    left: calc(100% - 3rem);
+}
+.btn-light-small {
+    border-radius: 100px !important;
+    font-size: 1.3rem !important;
+}
 .btn {
     background-color: black;
     color: white;
@@ -144,7 +189,7 @@ img {
     transition: all 0.6s;
 }
 
-.btn:hover {
+button:hover {
     transform: scale(1.06);
     box-shadow: 0 0.3em 0.6em rgba(0, 0, 0, 0.25);
     transition: all 0.3s;
@@ -221,11 +266,37 @@ img {
 }
 
 .card-info {
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
+    background-color: white;
+    position: relative;
+    border-radius: 0.2rem;
+    font-weight: bold;
+    margin: 0.3rem;
+    padding: 0.5rem;
 }
-
+.card-info .product-type {
+    background: rgba(211, 211, 211, 0.503);
+    margin-top: 0.3rem;
+    width: fit-content;
+    padding: 0.4em;
+}
+.card-info img{
+    outline: none !important;
+    width: 100%;
+    height: auto;
+    max-width: 12rem;
+}
+.card-info .product-options {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    width: fit-content;
+    padding: 0.4em;
+}
+.card-info .product-options span{
+    color: rgb(71, 174, 214);
+}
+.card-info p {
+    line-height: 1.5rem;
+}
 .card-info span {
     font-weight: bold;
 }
@@ -264,26 +335,30 @@ img {
     padding-inline: 1rem;
     padding-block: 3rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
 .hero-secondary-info h2 {
     font-size: 2rem;
 }
-
+.title{
+    color: var(--primary-color);
+    font-size: 2.3rem;
+    font-weight: bold;
+    padding-block: 0.3rem;
+}
 .hero-secondary-info p {
-    font-weight: 500;
-    color: #282828;
-    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.4rem;
 }
 
 .hero-secondary-info img {
+    border-radius: var(--border-radius);
     width: 100%;
-    height: 20rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-    object-fit: contain;
+    max-width: 20rem;
 }
 
 .card-2 {
@@ -304,8 +379,13 @@ img {
     display: flex;
     padding: 1rem;
     flex-direction: column;
+    background-color: var(--secondary-color);
 }
-
+.card-2 .add-to-cart {
+    color: white !important;
+    left: calc(100% - 4rem);
+    margin-bottom: 1rem;
+}
 .card-2 .card-info span {
     font-weight: bold;
 }
@@ -507,9 +587,14 @@ footer {
 footer .s0 {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 3rem;
 }
-
+@media (max-width: 1000px) {
+    .s0{
+        flex-wrap: wrap;
+    }
+}
 footer .s1 {
     display: flex;
     flex-direction: column;
